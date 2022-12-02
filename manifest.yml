@@ -1,0 +1,4 @@
+---
+applications:
+  - name: frontend_integradora2
+    command: npm start
