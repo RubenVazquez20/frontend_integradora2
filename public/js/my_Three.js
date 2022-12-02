@@ -18,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 camera.position.set(-60, 12, -60);
 
 //AmbienLight general /TO DO/
-const light = new THREE.AmbientLight(0x404040, 15); // soft white light
+const light = new THREE.AmbientLight(0x404040, 10); // soft white light
 scene.add(light);
 
 //render
@@ -160,7 +160,7 @@ function createFountain(x, y, z){
 function plano(scene){
     let geometry = new THREE.BoxGeometry(25, 0.2, 25);
     let material = new THREE.MeshStandardMaterial({color: 0x2C2F4F});
-    let material2= new THREE.MeshStandardMaterial({color: 0xffffff});
+    let material2= new THREE.MeshBasicMaterial({color: 0x415280});
     const plane = new THREE.Mesh(geometry, material);
     let geometry2 = new THREE.BoxGeometry(7, 0.2, 25);
     const calle1 = new THREE.Mesh(geometry2, material2);
@@ -198,9 +198,7 @@ function drawTlight(){
 
     pole2.rotateOnWorldAxis(myAxis, THREE.MathUtils.degToRad(270));
     tlight.add(pole2);   
-    
 
-    // scene.add(tlight);
     return tlight;
 
 }
@@ -235,6 +233,11 @@ function drawCar(){
     cabin.position.x = -6;
     cabin.position.y = 25.5;
     car.add(cabin);
+
+    const luz = new THREE.PointLight( 0xffffff, 20, 5);
+    luz.position.y = 5;
+    luz.position.x = 60;
+    car.add(luz);
     
     car.scale.set(.033,.039,.039)
     // car.position.set(dx, 0, dy)
@@ -258,6 +261,10 @@ function drawTree(){
     const hojas = new THREE.Mesh(geometry1, material1);
     hojas.position.y = 2;
     tree.add(hojas);
+
+    const luz = new THREE.PointLight( 0x00ff00, 4, 3);
+    luz.position.y = 1;
+    tree.add(luz);
 
     return tree;
     // Añadir arbol completo
@@ -291,6 +298,11 @@ function drawFountain(){
     bola.rotateOnAxis(myAxis, 110);
 
     fountain.add(bola);
+
+    const luz = new THREE.PointLight( 0xffffff, 5, 5);
+    luz.position.y = 3;
+    // luz.position.x = 60;
+    fountain.add(luz);
     
     return fountain;
 }
